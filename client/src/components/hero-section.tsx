@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button";
-import profilePic from '/IMG_6584_1752600938895.png';
+
+
+const profilePic = new URL('/IMG_6584_1752600938895.png', import.meta.url).href;
+
 
 
 export default function HeroSection() {
