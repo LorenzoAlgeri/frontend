@@ -1,4 +1,5 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
@@ -9,17 +10,22 @@ async function throwIfResNotOk(res: Response) {
 
 export async function apiRequest(
   method: string,
-  url: string,
-  data?: unknown | undefined,
+  path: string,
+  body?: any
 ): Promise<Response> {
-  const res = await fetch(url, {
+  const res = await fetch(`${API_BASE_URL}${path}`, {
     method,
-    headers: data ? { "Content-Type": "application/json" } : {},
-    body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: body ? JSON.stringify(body) : undefined,
   });
 
-  await throwIfResNotOk(res);
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}));
+    throw new Error(error.message || "Errore nella richiesta API");
+  }
+
   return res;
 }
 
