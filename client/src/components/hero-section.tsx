@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import imgUrl from '/IMG_6584_1752600938895.png';
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -56,7 +57,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-ncs/15 to-transparent rounded-full blur-lg"></div>
               <img
-                src="/IMG_6584_1752600938895.png"
+                src={new URL('/IMG_6584_1752600938895.png', import.meta.url).href}
                 alt="Lorenzo Algeri - Sviluppatore AI e Automazione"
                 className="profile-image relative rounded-full w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover object-top border-4 border-blue-ncs/30"
                 style={{ objectPosition: 'center top' }}
