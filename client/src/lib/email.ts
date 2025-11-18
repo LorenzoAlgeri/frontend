@@ -29,7 +29,7 @@ export async function sendContactEmail(data: InsertContact) {
       phone: data.phone || "",
       company: data.company || "",
       message: data.message,
-      _subject: "Nuova richiesta di consulenza dal sito",
+      _subject: `Nuova richiesta di consulenza – ${data.name}`,
       _replyto: data.email,
       _template: "table",
     } satisfies FormSubmitPayload),
