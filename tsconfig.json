@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnex
+    "module": "esnex",
     "baseUrl": "./client/src",
     "paths": {
       "@/*": ["*"]
