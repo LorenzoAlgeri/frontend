@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+//import { apiRequest } from "@/lib/queryClient";
+import { sendContactEmail } from "@/lib/email";
 import { insertContactSchema } from "@shared/schema";
 import { Mail, Phone, MapPin } from "lucide-react";
 import type { InsertContact } from "@shared/schema";
@@ -29,8 +30,9 @@ export default function ContactSection() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      const response = await apiRequest("POST", "/api/contacts", data);
-      return response.json();
+      //const response = await apiRequest("POST", "/api/contacts", data);
+      //return response.json();
+      return await sendContactEmail(data);
     },
     onSuccess: () => {
       toast({
