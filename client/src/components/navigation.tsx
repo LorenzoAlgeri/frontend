@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +17,25 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
+  const navigateToSection = (sectionId: string) => {
+    setIsMenuOpen(false);
+    
+    // Se non siamo nella home, naviga prima alla home
+    if (location !== "/") {
+      setLocation("/");
+      // Aspetta che la navigazione sia completata, poi scrolla
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // Siamo già nella home, scrolla direttamente
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -34,37 +50,37 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <button
-              onClick={() => scrollToSection("home")}
+              onClick={() => navigateToSection("home")}
               className="nav-link"
             >
               Home
             </button>
             <button
-              onClick={() => scrollToSection("chi-sono")}
+              onClick={() => navigateToSection("chi-sono")}
               className="nav-link"
             >
               Chi sono
             </button>
             <button
-              onClick={() => scrollToSection("servizi")}
+              onClick={() => navigateToSection("servizi")}
               className="nav-link"
             >
               Servizi
             </button>
             <button
-              onClick={() => scrollToSection("portfolio")}
+              onClick={() => navigateToSection("portfolio")}
               className="nav-link"
             >
               Portfolio
             </button>
             <button
-              onClick={() => scrollToSection("testimonianze")}
+              onClick={() => navigateToSection("testimonianze")}
               className="nav-link"
             >
               Testimonianze
             </button>
             <button
-              onClick={() => scrollToSection("contatti")}
+              onClick={() => navigateToSection("contatti")}
               className="btn-primary"
             >
               Contatti
@@ -87,37 +103,37 @@ export default function Navigation() {
           <div className="md:hidden pb-6 animate-slide-up">
             <div className="glass-card space-y-3 p-4 mx-2">
               <button
-                onClick={() => scrollToSection("home")}
+                onClick={() => navigateToSection("home")}
                 className="block w-full text-left py-3 px-4 text-white hover:text-blue-ncs font-medium rounded-lg hover:bg-blue-ncs/10 transition-all duration-300"
               >
                 Home
               </button>
               <button
-                onClick={() => scrollToSection("chi-sono")}
+                onClick={() => navigateToSection("chi-sono")}
                 className="block w-full text-left py-3 px-4 text-white hover:text-blue-ncs font-medium rounded-lg hover:bg-blue-ncs/10 transition-all duration-300"
               >
                 Chi sono
               </button>
               <button
-                onClick={() => scrollToSection("servizi")}
+                onClick={() => navigateToSection("servizi")}
                 className="block w-full text-left py-3 px-4 text-white hover:text-blue-ncs font-medium rounded-lg hover:bg-blue-ncs/10 transition-all duration-300"
               >
                 Servizi
               </button>
               <button
-                onClick={() => scrollToSection("portfolio")}
+                onClick={() => navigateToSection("portfolio")}
                 className="block w-full text-left py-3 px-4 text-white hover:text-blue-ncs font-medium rounded-lg hover:bg-blue-ncs/10 transition-all duration-300"
               >
                 Portfolio
               </button>
               <button
-                onClick={() => scrollToSection("testimonianze")}
+                onClick={() => navigateToSection("testimonianze")}
                 className="block w-full text-left py-3 px-4 text-white hover:text-blue-ncs font-medium rounded-lg hover:bg-blue-ncs/10 transition-all duration-300"
               >
                 Testimonianze
               </button>
               <button
-                onClick={() => scrollToSection("contatti")}
+                onClick={() => navigateToSection("contatti")}
                 className="btn-primary w-full"
               >
                 Contatti

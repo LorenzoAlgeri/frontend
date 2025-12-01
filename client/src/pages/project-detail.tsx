@@ -1,5 +1,5 @@
 import { useRoute, Link } from "wouter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check, ChevronLeft, ChevronRight, Zap, Clock, Target, Mail, Bot, BarChart3, ArrowLeft } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -106,6 +106,11 @@ export default function ProjectDetail() {
 
   const project = projects.find(p => p.id === params?.id);
 
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [params?.id]);
+
   if (!project) {
     return (
       <div className="min-h-screen bg-oxford-blue text-white flex items-center justify-center">
@@ -146,11 +151,11 @@ export default function ProjectDetail() {
         {/* Back Button */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Link 
-            href="/#portfolio" 
+            href="/" 
             className="inline-flex items-center gap-2 text-white/70 hover:text-blue-ncs transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>Torna ai progetti</span>
+            <span>Torna alla Home</span>
           </Link>
         </div>
 
