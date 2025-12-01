@@ -3,6 +3,9 @@ import type { Project } from "@/data/projects";
 import ImageGallery from "@/components/ImageGallery";
 import { X, Check, Target, Lightbulb, TrendingUp, Code } from "lucide-react";
 
+// Delay before scrolling to contacts section to allow modal close animation to complete
+const MODAL_CLOSE_ANIMATION_DELAY_MS = 300;
+
 interface ProjectDetailProps {
   project: Project;
   onClose: () => void;
@@ -182,7 +185,7 @@ export default function ProjectDetail({
                     if (element) {
                       element.scrollIntoView({ behavior: "smooth" });
                     }
-                  }, 300);
+                  }, MODAL_CLOSE_ANIMATION_DELAY_MS);
                 }}
                 className="btn-primary"
               >

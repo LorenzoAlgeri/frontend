@@ -22,10 +22,12 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
   }, []);
 
   const goToPrevious = useCallback(() => {
+    if (images.length === 0) return;
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }, [images.length]);
 
   const goToNext = useCallback(() => {
+    if (images.length === 0) return;
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length]);
 
