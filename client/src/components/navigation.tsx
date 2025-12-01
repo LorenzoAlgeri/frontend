@@ -52,6 +52,12 @@ export default function Navigation() {
               Servizi
             </button>
             <button
+              onClick={() => scrollToSection("progetti")}
+              className="nav-link"
+            >
+              Progetti
+            </button>
+            <button
               onClick={() => scrollToSection("testimonianze")}
               className="nav-link"
             >
@@ -97,6 +103,12 @@ export default function Navigation() {
                 className="block w-full text-left py-3 px-4 text-white hover:text-blue-ncs font-medium rounded-lg hover:bg-blue-ncs/10 transition-all duration-300"
               >
                 Servizi
+              </button>
+              <button
+                onClick={() => scrollToSection("progetti")}
+                className="block w-full text-left py-3 px-4 text-white hover:text-blue-ncs font-medium rounded-lg hover:bg-blue-ncs/10 transition-all duration-300"
+              >
+                Progetti
               </button>
               <button
                 onClick={() => scrollToSection("testimonianze")}
