@@ -80,17 +80,17 @@
     scroll-behavior: smooth;
   }
 
-  /* Zoom out effect */
+    /* Zoom out effect */
   @media (min-width: 1024px) {
-    body { zoom: 0.85; }
+    body { zoom: 0.67; }
   }
 
   @media (min-width: 1440px) {
-    body { zoom: 0.9; }
+    body { zoom: 0.75; }
   }
 
   @media (min-width: 1920px) {
-    body { zoom: 0.95; }
+    body { zoom: 0.8; }
   }
 }
 
