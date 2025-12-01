@@ -79,6 +79,19 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Zoom out effect */
+  @media (min-width: 1024px) {
+    body { zoom: 0.85; }
+  }
+
+  @media (min-width: 1440px) {
+    body { zoom: 0.9; }
+  }
+
+  @media (min-width: 1920px) {
+    body { zoom: 0.95; }
+  }
 }
 
 @layer utilities {
