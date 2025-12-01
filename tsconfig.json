@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "esnex",
+    "baseUrl": "./client/src",
+    "paths": {
+      "@/*": ["*"]
+    }
+  }
+}
